@@ -1,0 +1,75 @@
+@model LogEntry
+@{
+    ViewData["Title"] = "Anomali Detayı";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header @(Model.Severity == "Critical" ? "bg-danger" : Model.Severity == "High" ? "bg-warning" : "bg-info") text-white">
+                <h4 class="mb-0">Anomali Detayı #@Model.Id</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-sm-4 fw-bold">Zaman:</div>
+                    <div class="col-sm-8">@Model.Timestamp.ToString("dd.MM.yyyy HH:mm:ss")</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4 fw-bold">Kullanıcı:</div>
+                    <div class="col-sm-8">@Model.UserName (@Model.UserId)</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4 fw-bold">İşlem:</div>
+                    <div class="col-sm-8"><span class="badge bg-secondary">@Model.Action</span></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4 fw-bold">Kaynak:</div>
+                    <div class="col-sm-8"><code>@Model.Resource</code></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4 fw-bold">IP Adresi:</div>
+                    <div class="col-sm-8"><code>@Model.IPAddress</code></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4 fw-bold">Başarı:</div>
+                    <div class="col-sm-8">@(Model.IsSuccess ? "Evet" : "Hayır")</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Anomali Analizi</h5>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-3">
+                    <h6>Anomali Skoru</h6>
+                    <div class="display-3 fw-bold @(Model.Severity == "Critical" ? "text-danger" : Model.Severity == "High" ? "text-warning" : "text-info")">
+                        @Model.AnomalyScore
+                    </div>
+                    <span class="badge @(Model.Severity == "Critical" ? "bg-danger" : Model.Severity == "High" ? "bg-warning" : "bg-info") fs-6">
+                        @(Model.Severity == "Critical" ? "KRİTİK" : Model.Severity == "High" ? "YÜKSEK" : "ORTA")
+                    </span>
+                </div>
+                <hr />
+                <h6>Tespit Edilen Anomaliler:</h6>
+                @if (!string.IsNullOrEmpty(Model.AnomalyReason))
+                {
+                    var reasons = Model.AnomalyReason.Split(" | ");
+                    <ul class="list-group list-group-flush">
+                        @foreach (var r in reasons)
+                        {
+                            <li class="list-group-item text-danger">
+                                <small>@r</small>
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+        </div>
+        <div class="mt-3">
+            <a asp-action="Index" class="btn btn-secondary w-100">Geri Dön</a>
+        </div>
+    </div>
+</div>

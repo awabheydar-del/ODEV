@@ -1,0 +1,71 @@
+@model LogEntry
+@{
+    ViewData["Title"] = "Yeni Log Ekle";
+}
+
+<h2>Yeni Log Kaydı Ekle</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label">Kullanıcı Adı</label>
+                <input asp-for="UserName" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label asp-for="UserId" class="form-label">Kullanıcı ID</label>
+                <input asp-for="UserId" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Action" class="form-label">İşlem</label>
+                <select asp-for="Action" class="form-select" required>
+                    <option value="">Seçiniz...</option>
+                    <option value="Login">Login</option>
+                    <option value="Logout">Logout</option>
+                    <option value="ViewFile">ViewFile</option>
+                    <option value="EditFile">EditFile</option>
+                    <option value="DeleteFile">DeleteFile</option>
+                    <option value="UploadFile">UploadFile</option>
+                    <option value="DownloadFile">DownloadFile</option>
+                    <option value="ExecuteCommand">ExecuteCommand</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Resource" class="form-label">Kaynak</label>
+                <input asp-for="Resource" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label asp-for="IPAddress" class="form-label">IP Adresi</label>
+                <input asp-for="IPAddress" class="form-control" required />
+            </div>
+            <div class="mb-3 form-check">
+                <input asp-for="IsSuccess" class="form-check-input" />
+                <label asp-for="IsSuccess" class="form-check-label">Başarıyla tamamlandı</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Log Ekle & Analiz Et</button>
+            <a asp-action="Index" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="card bg-light">
+            <div class="card-body">
+                <h5 class="card-title">Bilgi</h5>
+                <p>Sisteme yeni bir log kaydı ekleyin. Sistem otomatik olarak:</p>
+                <ul>
+                    <li>Kullanıcının normal davranış profilini oluşturacak</li>
+                    <li>Bu log kaydını profil ile karşılaştıracak</li>
+                    <li>Anomali tespit edilirse uyarı gösterecek</li>
+                </ul>
+                <hr />
+                <h6>Test Anomalileri</h6>
+                <p>Şu değerler anomali tetikler:</p>
+                <ul class="small">
+                    <li><strong>Alışılmadık saat:</strong> Normalde kullanıcı hiç giriş yapmamış bir saat</li>
+                    <li><strong>Bilinmeyen IP:</strong> Kullanıcının daha önce kullanmadığı bir IP</li>
+                    <li><strong>Alışılmadık işlem:</strong> Kullanıcının hiç yapmadığı bir Action</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
