@@ -21,7 +21,7 @@ public class AnomalyController : Controller
     public IActionResult Details(int id)
     {
         var log = _logService.GetById(id);
-        if (log == null || !log.IsAnomaly)
+        if (log == null || !log.anormal)
             return NotFound();
         return View(log);
     }

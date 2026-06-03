@@ -1,38 +1,42 @@
-@model LogEntry
+@model İşlem
 @{
     ViewData["Title"] = "Anomali Detayı";
+    string severity = "Normal";
+    if (Model.puan >= 80) severity = "Kritik";
+    else if (Model.puan >= 60) severity = "Yüksek";
+    else if (Model.puan >= 50) severity = "Orta";
 }
 
 <div class="row">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header @(Model.Severity == "Critical" ? "bg-danger" : Model.Severity == "High" ? "bg-warning" : "bg-info") text-white">
-                <h4 class="mb-0">Anomali Detayı #@Model.Id</h4>
+            <div class="card-header @(severity == "Kritik" ? "bg-danger" : severity == "Yüksek" ? "bg-warning" : "bg-info") text-white">
+                <h4 class="mb-0">Anomali Detayı #@Model.işlem_id</h4>
             </div>
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col-sm-4 fw-bold">Zaman:</div>
-                    <div class="col-sm-8">@Model.Timestamp.ToString("dd.MM.yyyy HH:mm:ss")</div>
+                    <div class="col-sm-8">@Model.tarih.ToString("dd.MM.yyyy HH:mm:ss")</div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-4 fw-bold">Kullanıcı:</div>
-                    <div class="col-sm-8">@Model.UserName (@Model.UserId)</div>
+                    <div class="col-sm-8">@Model.kul_adı (@Model.kul_id)</div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-4 fw-bold">İşlem:</div>
-                    <div class="col-sm-8"><span class="badge bg-secondary">@Model.Action</span></div>
+                    <div class="col-sm-8"><span class="badge bg-secondary">@Model.işlem</span></div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-4 fw-bold">Kaynak:</div>
-                    <div class="col-sm-8"><code>@Model.Resource</code></div>
+                    <div class="col-sm-8"><code>@Model.kaynak</code></div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-4 fw-bold">IP Adresi:</div>
-                    <div class="col-sm-8"><code>@Model.IPAddress</code></div>
+                    <div class="col-sm-8"><code>@Model.ip</code></div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-4 fw-bold">Başarı:</div>
-                    <div class="col-sm-8">@(Model.IsSuccess ? "Evet" : "Hayır")</div>
+                    <div class="col-sm-8">@(Model.başarılı ? "Evet" : "Hayır")</div>
                 </div>
             </div>
         </div>
@@ -45,18 +49,18 @@
             <div class="card-body">
                 <div class="text-center mb-3">
                     <h6>Anomali Skoru</h6>
-                    <div class="display-3 fw-bold @(Model.Severity == "Critical" ? "text-danger" : Model.Severity == "High" ? "text-warning" : "text-info")">
-                        @Model.AnomalyScore
+                    <div class="display-3 fw-bold @(severity == "Kritik" ? "text-danger" : severity == "Yüksek" ? "text-warning" : "text-info")">
+                        @Model.puan
                     </div>
-                    <span class="badge @(Model.Severity == "Critical" ? "bg-danger" : Model.Severity == "High" ? "bg-warning" : "bg-info") fs-6">
-                        @(Model.Severity == "Critical" ? "KRİTİK" : Model.Severity == "High" ? "YÜKSEK" : "ORTA")
+                    <span class="badge @(severity == "Kritik" ? "bg-danger" : severity == "Yüksek" ? "bg-warning" : "bg-info") fs-6">
+                        @(severity == "Kritik" ? "KRİTİK" : severity == "Yüksek" ? "YÜKSEK" : "ORTA")
                     </span>
                 </div>
                 <hr />
                 <h6>Tespit Edilen Anomaliler:</h6>
-                @if (!string.IsNullOrEmpty(Model.AnomalyReason))
+                @if (!string.IsNullOrEmpty(Model.neden))
                 {
-                    var reasons = Model.AnomalyReason.Split(" | ");
+                    var reasons = Model.neden.Split(" | ");
                     <ul class="list-group list-group-flush">
                         @foreach (var r in reasons)
                         {

@@ -26,10 +26,10 @@ public class HomeController : Controller
                 ? Math.Round((double)_logService.AnomalyCount / _logService.Count * 100, 2)
                 : 0,
             RecentAnomalies = anomalies.Take(10).ToList(),
-            LogsLast24Hours = allLogs.Count(l => l.Timestamp >= DateTime.Now.AddHours(-24)),
-            CriticalAnomalies = anomalies.Count(a => a.AnomalyScore >= 80),
-            HighAnomalies = anomalies.Count(a => a.AnomalyScore >= 60 && a.AnomalyScore < 80),
-            MediumAnomalies = anomalies.Count(a => a.AnomalyScore >= 50 && a.AnomalyScore < 60)
+            LogsLast24Hours = allLogs.Count(l => l.tarih >= DateTime.Now.AddHours(-24)),
+            CriticalAnomalies = anomalies.Count(a => a.puan >= 80),
+            HighAnomalies = anomalies.Count(a => a.puan >= 60 && a.puan < 80),
+            MediumAnomalies = anomalies.Count(a => a.puan >= 50 && a.puan < 60)
         };
 
         return View(model);

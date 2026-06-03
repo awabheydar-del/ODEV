@@ -9,53 +9,51 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ZeroDayAnomali
 build_property.RootNamespace = ZeroDayAnomali
-build_property.ProjectDir = C:\veritabanı ödev\ZeroDayAnomali\
+build_property.ProjectDir = C:\Users\abdulmuin\Downloads\ODEV\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
-build_property.RazorLangVersion = 9.0
+build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\veritabanı ödev\ZeroDayAnomali
+build_property.MSBuildProjectDirectory = C:\Users\abdulmuin\Downloads\ODEV
 build_property._RazorSourceGeneratorDebug = 
-build_property.EffectiveAnalysisLevelStyle = 9.0
-build_property.EnableCodeStyleSeverity = 
 
-[C:/veritabanı ödev/ZeroDayAnomali/Views/Anomaly/Details.cshtml]
+[C:/Users/abdulmuin/Downloads/ODEV/Views/Anomaly/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbWFseVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/veritabanı ödev/ZeroDayAnomali/Views/Anomaly/Index.cshtml]
+[C:/Users/abdulmuin/Downloads/ODEV/Views/Anomaly/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbWFseVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/veritabanı ödev/ZeroDayAnomali/Views/Home/Index.cshtml]
+[C:/Users/abdulmuin/Downloads/ODEV/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/veritabanı ödev/ZeroDayAnomali/Views/Log/Create.cshtml]
+[C:/Users/abdulmuin/Downloads/ODEV/Views/Log/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/veritabanı ödev/ZeroDayAnomali/Views/Log/Index.cshtml]
+[C:/Users/abdulmuin/Downloads/ODEV/Views/Log/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/veritabanı ödev/ZeroDayAnomali/Views/Shared/Error.cshtml]
+[C:/Users/abdulmuin/Downloads/ODEV/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/veritabanı ödev/ZeroDayAnomali/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/abdulmuin/Downloads/ODEV/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/veritabanı ödev/ZeroDayAnomali/Views/_ViewImports.cshtml]
+[C:/Users/abdulmuin/Downloads/ODEV/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/veritabanı ödev/ZeroDayAnomali/Views/_ViewStart.cshtml]
+[C:/Users/abdulmuin/Downloads/ODEV/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/veritabanı ödev/ZeroDayAnomali/Views/Shared/_Layout.cshtml]
+[C:/Users/abdulmuin/Downloads/ODEV/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-644auosdoq

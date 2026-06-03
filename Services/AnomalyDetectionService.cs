@@ -14,53 +14,53 @@ public class AnomalyDetectionService
         _logService = logService;
     }
 
-    public (bool isAnomaly, double score, string reason) Analyze(LogEntry log)
+    public (bool anormal, double puan, string neden) Analyze(İşlem log)
     {
         _profileService.BuildProfileFromLogs();
-        var profile = _profileService.GetProfile(log.UserId);
+        var profile = _profileService.GetProfile(log.kul_id);
 
         if (profile == null)
             return (false, 0, "Yeni kullanıcı - profil oluşturuluyor");
 
-        double score = 0;
+        double puan = 0;
         var reasons = new List<string>();
 
-        if (!profile.NormalHours.Contains(log.Timestamp.Hour))
+        if (!profile.normal_saatler.Contains(log.tarih.Hour))
         {
-            score += 30;
-            reasons.Add($"Olağan dışı saat: {log.Timestamp.Hour}:00");
+            puan += 30;
+            reasons.Add($"Olağan dışı saat: {log.tarih.Hour}:00");
         }
 
-        if (!profile.NormalIPs.Contains(log.IPAddress))
+        if (!profile.normal_iplar.Contains(log.ip))
         {
-            score += 25;
-            reasons.Add($"Bilinmeyen IP: {log.IPAddress}");
+            puan += 25;
+            reasons.Add($"Bilinmeyen IP: {log.ip}");
         }
 
-        if (!profile.NormalActions.Contains(log.Action))
+        if (!profile.normal_işlemler.Contains(log.işlem))
         {
-            score += 25;
-            reasons.Add($"Alışılmadık işlem: {log.Action}");
+            puan += 25;
+            reasons.Add($"Alışılmadık işlem: {log.işlem}");
         }
 
-        if (!profile.NormalResources.Contains(log.Resource))
+        if (!profile.normal_kaynaklar.Contains(log.kaynak))
         {
-            score += 20;
-            reasons.Add($"Bilinmeyen kaynak: {log.Resource}");
+            puan += 20;
+            reasons.Add($"Bilinmeyen kaynak: {log.kaynak}");
         }
 
-        bool isAnomaly = score >= Threshold;
-        string reason = reasons.Count > 0 ? string.Join(" | ", reasons) : "Normal";
+        bool anormal = puan >= Threshold;
+        string neden = reasons.Count > 0 ? string.Join(" | ", reasons) : "Normal";
 
-        return (isAnomaly, score, reason);
+        return (anormal, puan, neden);
     }
 
-    public LogEntry AnalyzeAndMark(LogEntry log)
+    public İşlem AnalyzeAndMark(İşlem log)
     {
-        var (isAnomaly, score, reason) = Analyze(log);
-        log.IsAnomaly = isAnomaly;
-        log.AnomalyScore = score;
-        log.AnomalyReason = reason;
+        var (anormal, puan, neden) = Analyze(log);
+        log.anormal = anormal;
+        log.puan = puan;
+        log.neden = neden;
         return log;
     }
 }

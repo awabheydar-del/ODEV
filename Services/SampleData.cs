@@ -18,7 +18,7 @@ public static class SampleData
         var normalActions = new[] { "Login", "ViewFile", "EditFile", "ViewFile", "Logout" };
         var resources = new[] { "/dashboard", "/documents/report.pdf", "/projects/plan.docx", "/data/analytics.xlsx", "/dashboard" };
 
-        var normalLogs = new List<LogEntry>();
+        var normalLogs = new List<İşlem>();
 
         foreach (var (id, name, baseHour, ip) in users)
         {
@@ -26,17 +26,17 @@ public static class SampleData
             {
                 for (int i = 0; i < normalActions.Length; i++)
                 {
-                    normalLogs.Add(new LogEntry
+                    normalLogs.Add(new İşlem
                     {
-                        Timestamp = DateTime.Now.AddDays(-day).AddHours(baseHour + i * 2).AddMinutes(rnd.Next(0, 59)),
-                        UserId = id,
-                        UserName = name,
-                        Action = normalActions[i],
-                        Resource = resources[i],
-                        IPAddress = ip,
-                        IsSuccess = true,
-                        IsAnomaly = false,
-                        AnomalyScore = 0
+                        tarih = DateTime.Now.AddDays(-day).AddHours(baseHour + i * 2).AddMinutes(rnd.Next(0, 59)),
+                        kul_id = id,
+                        kul_adı = name,
+                        işlem = normalActions[i],
+                        kaynak = resources[i],
+                        ip = ip,
+                        başarılı = true,
+                        anormal = false,
+                        puan = 0
                     });
                 }
             }
@@ -44,57 +44,57 @@ public static class SampleData
 
         logService.AddRange(normalLogs);
 
-        var anomalyLogs = new List<LogEntry>
+        var anomalyLogs = new List<İşlem>
         {
             new()
             {
-                Timestamp = DateTime.Now.AddMinutes(-30),
-                UserId = "user001",
-                UserName = "Ahmet Yılmaz",
-                Action = "Login",
-                Resource = "/dashboard",
-                IPAddress = "185.220.101.42",
-                IsSuccess = true,
+                tarih = DateTime.Now.AddMinutes(-30),
+                kul_id = "user001",
+                kul_adı = "Ahmet Yılmaz",
+                işlem = "Login",
+                kaynak = "/dashboard",
+                ip = "185.220.101.42",
+                başarılı = true,
             },
             new()
             {
-                Timestamp = DateTime.Now.AddMinutes(-15),
-                UserId = "user001",
-                UserName = "Ahmet Yılmaz",
-                Action = "DeleteFile",
-                Resource = "/critical/data.db",
-                IPAddress = "192.168.1.100",
-                IsSuccess = true,
+                tarih = DateTime.Now.AddMinutes(-15),
+                kul_id = "user001",
+                kul_adı = "Ahmet Yılmaz",
+                işlem = "DeleteFile",
+                kaynak = "/critical/data.db",
+                ip = "192.168.1.100",
+                başarılı = true,
             },
             new()
             {
-                Timestamp = DateTime.Now.AddMinutes(-10),
-                UserId = "user002",
-                UserName = "Zeynep Kaya",
-                Action = "ExecuteCommand",
-                Resource = "/bin/sh",
-                IPAddress = "91.234.56.78",
-                IsSuccess = true,
+                tarih = DateTime.Now.AddMinutes(-10),
+                kul_id = "user002",
+                kul_adı = "Zeynep Kaya",
+                işlem = "ExecuteCommand",
+                kaynak = "/bin/sh",
+                ip = "91.234.56.78",
+                başarılı = true,
             },
             new()
             {
-                Timestamp = DateTime.Now.AddMinutes(-5),
-                UserId = "user003",
-                UserName = "Mehmet Demir",
-                Action = "Login",
-                Resource = "/dashboard",
-                IPAddress = "10.0.0.5",
-                IsSuccess = true,
+                tarih = DateTime.Now.AddMinutes(-5),
+                kul_id = "user003",
+                kul_adı = "Mehmet Demir",
+                işlem = "Login",
+                kaynak = "/dashboard",
+                ip = "10.0.0.5",
+                başarılı = true,
             },
             new()
             {
-                Timestamp = DateTime.Now.AddMinutes(-1),
-                UserId = "user002",
-                UserName = "Zeynep Kaya",
-                Action = "DownloadFile",
-                Resource = "/confidential/musteri_verileri.xlsx",
-                IPAddress = "192.168.1.200",
-                IsSuccess = true,
+                tarih = DateTime.Now.AddMinutes(-1),
+                kul_id = "user002",
+                kul_adı = "Zeynep Kaya",
+                işlem = "DownloadFile",
+                kaynak = "/confidential/musteri_verileri.xlsx",
+                ip = "192.168.1.200",
+                başarılı = true,
             },
         };
 

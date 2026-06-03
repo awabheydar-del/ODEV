@@ -1,4 +1,4 @@
-@model List<LogEntry>
+@model List<İşlem>
 @{
     ViewData["Title"] = "Anomali Raporları";
 }
@@ -20,7 +20,6 @@
                         <th>Kaynak</th>
                         <th>IP</th>
                         <th>Skor</th>
-                        <th>Seviye</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -28,19 +27,14 @@
                     @foreach (var a in Model)
                     {
                         <tr class="table-danger">
-                            <td>@a.Id</td>
-                            <td>@a.Timestamp.ToString("dd.MM.yyyy HH:mm:ss")</td>
-                            <td>@a.UserName (@a.UserId)</td>
-                            <td>@a.Action</td>
-                            <td>@a.Resource</td>
-                            <td>@a.IPAddress</td>
-                            <td><span class="badge @(a.AnomalyScore >= 80 ? "bg-danger" : a.AnomalyScore >= 60 ? "bg-warning" : "bg-info")">@a.AnomalyScore</span></td>
-                            <td>
-                                <span class="badge @(a.Severity == "Critical" ? "bg-danger" : a.Severity == "High" ? "bg-warning" : "bg-info")">
-                                    @(a.Severity == "Critical" ? "Kritik" : a.Severity == "High" ? "Yüksek" : "Orta")
-                                </span>
-                            </td>
-                            <td><a asp-action="Details" asp-route-id="@a.Id" class="btn btn-sm btn-outline-danger">Detay</a></td>
+                            <td>@a.işlem_id</td>
+                            <td>@a.tarih.ToString("dd.MM.yyyy HH:mm:ss")</td>
+                            <td>@a.kul_adı (@a.kul_id)</td>
+                            <td>@a.işlem</td>
+                            <td>@a.kaynak</td>
+                            <td>@a.ip</td>
+                            <td><span class="badge @(a.puan >= 80 ? "bg-danger" : a.puan >= 60 ? "bg-warning" : "bg-info")">@a.puan</span></td>
+                            <td><a asp-action="Details" asp-route-id="@a.işlem_id" class="btn btn-sm btn-outline-danger">Detay</a></td>
                         </tr>
                     }
                 </tbody>

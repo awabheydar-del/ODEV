@@ -27,15 +27,15 @@ public class LogController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(LogEntry log)
+    public IActionResult Create(İşlem log)
     {
-        log.Timestamp = DateTime.Now;
+        log.tarih = DateTime.Now;
         _anomalyService.AnalyzeAndMark(log);
         _logService.Add(log);
 
-        if (log.IsAnomaly)
+        if (log.anormal)
         {
-            TempData["AnomalyAlert"] = $"ZERO-DAY ANOMALİ TESPİT EDİLDİ! Skor: {log.AnomalyScore}";
+            TempData["AnomalyAlert"] = $"ZERO-DAY ANOMALİ TESPİT EDİLDİ! Skor: {log.puan}";
         }
         else
         {

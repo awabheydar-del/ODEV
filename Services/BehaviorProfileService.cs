@@ -4,7 +4,7 @@ namespace ZeroDayAnomali.Services;
 
 public class BehaviorProfileService
 {
-    private readonly Dictionary<string, UserBehaviorProfile> _profiles = new();
+    private readonly Dictionary<string, Profil> _profiles = new();
     private readonly LogService _logService;
 
     public BehaviorProfileService(LogService logService)
@@ -12,40 +12,40 @@ public class BehaviorProfileService
         _logService = logService;
     }
 
-    public UserBehaviorProfile GetOrCreateProfile(string userId, string userName)
+    public Profil GetOrCreateProfile(string kulId, string kulAdı)
     {
-        if (!_profiles.ContainsKey(userId))
+        if (!_profiles.ContainsKey(kulId))
         {
-            _profiles[userId] = new UserBehaviorProfile
+            _profiles[kulId] = new Profil
             {
-                UserId = userId,
-                UserName = userName,
+                kul_id = kulId,
+                kul_adı = kulAdı,
             };
         }
-        return _profiles[userId];
+        return _profiles[kulId];
     }
 
     public void BuildProfileFromLogs()
     {
         _profiles.Clear();
-        var logs = _logService.GetAll().Where(l => !l.IsAnomaly);
+        var logs = _logService.GetAll().Where(l => !l.anormal);
 
         foreach (var log in logs)
         {
-            var profile = GetOrCreateProfile(log.UserId, log.UserName);
-            if (!profile.NormalHours.Contains(log.Timestamp.Hour))
-                profile.NormalHours.Add(log.Timestamp.Hour);
-            if (!profile.NormalIPs.Contains(log.IPAddress))
-                profile.NormalIPs.Add(log.IPAddress);
-            if (!profile.NormalActions.Contains(log.Action))
-                profile.NormalActions.Add(log.Action);
-            if (!profile.NormalResources.Contains(log.Resource))
-                profile.NormalResources.Add(log.Resource);
+            var profile = GetOrCreateProfile(log.kul_id, log.kul_adı);
+            if (!profile.normal_saatler.Contains(log.tarih.Hour))
+                profile.normal_saatler.Add(log.tarih.Hour);
+            if (!profile.normal_iplar.Contains(log.ip))
+                profile.normal_iplar.Add(log.ip);
+            if (!profile.normal_işlemler.Contains(log.işlem))
+                profile.normal_işlemler.Add(log.işlem);
+            if (!profile.normal_kaynaklar.Contains(log.kaynak))
+                profile.normal_kaynaklar.Add(log.kaynak);
         }
     }
 
-    public UserBehaviorProfile? GetProfile(string userId)
+    public Profil? GetProfile(string kulId)
     {
-        return _profiles.GetValueOrDefault(userId);
+        return _profiles.GetValueOrDefault(kulId);
     }
 }

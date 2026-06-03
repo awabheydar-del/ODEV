@@ -1,11 +1,11 @@
 namespace ZeroDayAnomali.Models;
 
-public class UserBehaviorProfile
+public class Profil
 {
-    public string UserId { get; set; } = "";
-    public string UserName { get; set; } = "";
-    public List<int> NormalHours { get; set; } = new();
-    public List<string> NormalIPs { get; set; } = new();
-    public List<string> NormalActions { get; set; } = new();
-    public List<string> NormalResources { get; set; } = new();
+    public string kul_id { get; set; } = "";
+    public string kul_adı { get; set; } = "";
+    public List<int> normal_saatler { get; set; } = new();
+    public List<string> normal_iplar { get; set; } = new();
+    public List<string> normal_işlemler { get; set; } = new();
+    public List<string> normal_kaynaklar { get; set; } = new();
 }

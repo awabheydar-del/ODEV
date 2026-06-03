@@ -1,4 +1,4 @@
-@model LogEntry
+@model İşlem
 @{
     ViewData["Title"] = "Yeni Log Ekle";
 }
@@ -10,16 +10,16 @@
     <div class="col-md-6">
         <form asp-action="Create" method="post">
             <div class="mb-3">
-                <label asp-for="UserName" class="form-label">Kullanıcı Adı</label>
-                <input asp-for="UserName" class="form-control" required />
+                <label asp-for="kul_adı" class="form-label">Kullanıcı Adı</label>
+                <input asp-for="kul_adı" class="form-control" required />
             </div>
             <div class="mb-3">
-                <label asp-for="UserId" class="form-label">Kullanıcı ID</label>
-                <input asp-for="UserId" class="form-control" required />
+                <label asp-for="kul_id" class="form-label">Kullanıcı ID</label>
+                <input asp-for="kul_id" class="form-control" required />
             </div>
             <div class="mb-3">
-                <label asp-for="Action" class="form-label">İşlem</label>
-                <select asp-for="Action" class="form-select" required>
+                <label asp-for="işlem" class="form-label">İşlem</label>
+                <select asp-for="işlem" class="form-select" required>
                     <option value="">Seçiniz...</option>
                     <option value="Login">Login</option>
                     <option value="Logout">Logout</option>
@@ -32,16 +32,16 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label asp-for="Resource" class="form-label">Kaynak</label>
-                <input asp-for="Resource" class="form-control" required />
+                <label asp-for="kaynak" class="form-label">Kaynak</label>
+                <input asp-for="kaynak" class="form-control" required />
             </div>
             <div class="mb-3">
-                <label asp-for="IPAddress" class="form-label">IP Adresi</label>
-                <input asp-for="IPAddress" class="form-control" required />
+                <label asp-for="ip" class="form-label">IP Adresi</label>
+                <input asp-for="ip" class="form-control" required />
             </div>
             <div class="mb-3 form-check">
-                <input asp-for="IsSuccess" class="form-check-input" />
-                <label asp-for="IsSuccess" class="form-check-label">Başarıyla tamamlandı</label>
+                <input asp-for="başarılı" class="form-check-input" />
+                <label asp-for="başarılı" class="form-check-label">Başarıyla tamamlandı</label>
             </div>
             <button type="submit" class="btn btn-primary">Log Ekle & Analiz Et</button>
             <a asp-action="Index" class="btn btn-secondary">İptal</a>

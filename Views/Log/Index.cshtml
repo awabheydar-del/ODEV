@@ -1,4 +1,4 @@
-@model List<LogEntry>
+@model List<İşlem>
 @{
     ViewData["Title"] = "Log Kayıtları";
 }
@@ -41,15 +41,15 @@
             <tbody>
                 @foreach (var log in Model)
                 {
-                    <tr class="@(log.IsAnomaly ? "table-danger" : "")">
-                        <td>@log.Id</td>
-                        <td>@log.Timestamp.ToString("dd.MM.yyyy HH:mm:ss")</td>
-                        <td>@log.UserName</td>
-                        <td>@log.Action</td>
-                        <td>@log.Resource</td>
-                        <td>@log.IPAddress</td>
+                    <tr class="@(log.anormal ? "table-danger" : "")">
+                        <td>@log.işlem_id</td>
+                        <td>@log.tarih.ToString("dd.MM.yyyy HH:mm:ss")</td>
+                        <td>@log.kul_adı</td>
+                        <td>@log.işlem</td>
+                        <td>@log.kaynak</td>
+                        <td>@log.ip</td>
                         <td>
-                            @if (log.IsAnomaly)
+                            @if (log.anormal)
                             {
                                 <span class="badge bg-danger">ANOMALİ</span>
                             }
@@ -59,9 +59,9 @@
                             }
                         </td>
                         <td>
-                            @if (log.IsAnomaly)
+                            @if (log.anormal)
                             {
-                                <span class="badge @(log.AnomalyScore >= 80 ? "bg-danger" : log.AnomalyScore >= 60 ? "bg-warning" : "bg-info")">@log.AnomalyScore</span>
+                                <span class="badge @(log.puan >= 80 ? "bg-danger" : log.puan >= 60 ? "bg-warning" : "bg-info")">@log.puan</span>
                             }
                         </td>
                     </tr>
